@@ -1,0 +1,23 @@
+<div *ngIf="selectedAuthor">
+  <h1>{{ selectedAuthor.name }}</h1>
+  <p>{{ selectedAuthor.bio }}</p>
+</div>
+<div>
+  <h2>Ses Articles :</h2>
+
+  <ul *ngIf="articleWithSameAutor" class="other-article">
+    <li
+      *ngFor="let article of articleWithSameAutor"
+      class="card other-article"
+      routerLink="/article/{{ article.id }}"
+    >
+      <img [src]="article.imageUrl" [alt]="article.title" />
+      <h2>
+        {{ article.title }}
+      </h2>
+      <span *ngFor="let keyword of article.keywords" class="keyword">{{
+        keyword
+      }}</span>
+    </li>
+  </ul>
+</div>

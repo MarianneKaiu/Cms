@@ -1,0 +1,24 @@
+<div *ngIf="featuredArticle" class="featuredArticle card">
+  <img [src]="featuredArticle.imageUrl" [alt]="featuredArticle.title" />
+  <div>
+    <h2>
+      {{ featuredArticle.title }}
+    </h2>
+    <p>
+      {{ featuredArticle.summary
+      }}<a routerLink="/article/{{ featuredArticle.id }}"> En lire plus</a>
+    </p>
+  </div>
+</div>
+<ul>
+  <li
+    *ngFor="let article of unfeaturedArticle"
+    class="card"
+    routerLink="/article/{{ article.id }}"
+  >
+    <img [src]="article.imageUrl" [alt]="article.title" />
+    <h2>
+      {{ article.title }}
+    </h2>
+  </li>
+</ul>

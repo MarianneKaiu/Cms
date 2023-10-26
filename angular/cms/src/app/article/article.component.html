@@ -1,0 +1,31 @@
+<div *ngIf="selectedArticle" class="card">
+  <img [src]="selectedArticle.imageUrl" [alt]="selectedArticle.title" />
+  <div>
+    <h1>{{ selectedArticle.title }}</h1>
+    <span
+      >par :
+      <a routerLink="/auteur/{{ selectedArticle.author.id }}">{{
+        selectedArticle.author.name
+      }}</a></span
+    >
+    <p>{{ selectedArticle.content }}</p>
+  </div>
+  <span *ngFor="let keyword of selectedArticle.keywords" class="keyword">{{
+    keyword
+  }}</span>
+</div>
+<ul *ngIf="sameKeywordArticle" class="other-article">
+  <li
+    *ngFor="let article of sameKeywordArticle"
+    class="card"
+    routerLink="/article/{{ article.id }}"
+  >
+    <img [src]="article.imageUrl" [alt]="article.title" />
+    <h2>
+      {{ article.title }}
+    </h2>
+    <span *ngFor="let keyword of article.keywords" class="keyword">{{
+      keyword
+    }}</span>
+  </li>
+</ul>
