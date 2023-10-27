@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Article } from '../article';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-articles',
@@ -9,19 +10,20 @@ import { Article } from '../article';
 })
 export class ArticlesComponent implements OnInit {
   allArticles!: Article[];
+  newArticles!: Observable<Article[]>;
   //TODO Math.random featuredArticle
-  featuredArticleId: string = '2';
+  featuredArticleId: string = '4';
   featuredArticle!: Article;
   unfeaturedArticle!: Article[];
 
   constructor(private articleService: ArticleService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.articleService.getData();
     this.allArticles = this.articleService.getAllArticles();
-    this.getFeaturedArticle();
-    this.getUnfeaturedArticle();
-    console.log(this.articleService.fetchAllArticles());
+    console.log(this.allArticles);
+    // this.getFeaturedArticle();
+    // this.getUnfeaturedArticle();
   }
 
   getFeaturedArticle() {

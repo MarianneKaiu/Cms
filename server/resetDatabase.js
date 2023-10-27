@@ -20,7 +20,6 @@ async function resetDatabase() {
             error
         );
     }
-    // Insérez à nouveau les données de mock
 
     try {
         await Article.insertMany(articlesData);

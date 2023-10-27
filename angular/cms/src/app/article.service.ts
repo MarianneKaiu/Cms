@@ -8,19 +8,28 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ArticleService {
-  data!: any;
+  data!: Article[];
   constructor(private http: HttpClient) {}
 
-  fetchAllArticles(): Observable<any> {
-    return this.http.get<any[]>('http://localhost:3000/api/articles');
+  fetchAllArticles(): Observable<Article[]> {
+    console.log('fetch');
+
+    return this.http.get<Article[]>('http://localhost:3000/api/articles');
   }
   getData() {
     this.fetchAllArticles().subscribe((response) => {
+      console.log(response);
       this.data = response;
+      console.log(this.data);
+      return this.data;
     });
   }
+  // getAllArticles() {
+  //   const allArticles: Article[] = MockAtricle;
+  //   return allArticles;
+  // }
   getAllArticles() {
-    const allArticles: Article[] = MockAtricle;
+    const allArticles: Article[] = this.data;
     return allArticles;
   }
 
